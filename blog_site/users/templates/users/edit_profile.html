@@ -1,0 +1,46 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+
+
+{% include "blog/nav.html" %}
+<section>
+    <div class="py-lg-8 py-md-10 py-sm-10 mh-100" style="background-color: #ebeef0bf;">
+        <div class="container p-4">
+            <div class="row rounded-1" style="background-color: #ebeef0;">
+                <div class="col-lg-6 col-12 m-auto p-4">
+                    <div class="flex">
+                        <h2 class="text uppercase text-center">Edit Profile</h2>
+                    </div>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="form-outline mb-3">
+                            <label class="form-label" for="form3Example4cg">Username : </label>
+                            <input type="email" name="email" id="form3Example4cg"
+                                style="border-radius: 10px; background-color: #cdcdd3;"
+                                class="form-control form-control-lg"
+                                value="{{form.username.value|default:user.username}}" />
+                        </div>
+                        <div class="form-outline mb-3">
+                            <label class="form-label" for="form3Example4cg">Upload Image : </label>
+                            <div class="form-outline d-flex">
+                                <label class="form-label" for="" style="font-family: Tinos, serif; padding: 2px 2px 2px 24px; color: rgba(34, 47, 62, 0.232);
+                                                        ">Current Image : </label>
+                                <a class="mx-auto text-primary" style="width: 54%; word-wrap: break-word;"
+                                    href="{{post.post_image.url}}">{{user.profile.profile_image}}</a>
+                            </div>
+                            <input type="file" name="email" id="form3Example4cg" style="background-color: #cdcdd3;"
+                                class="form-control form-control-lg" value="{{user.profile.profile_image.url}}" />
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit"
+                                class="btn btn-success btn-block rounded-3 bg-secondary text-primary text-body">Update
+                                Profile</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
