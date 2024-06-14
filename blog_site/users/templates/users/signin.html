@@ -12,9 +12,7 @@
             <div class="row d-flex justify-content-center top-50 start-50 h-100">
                 <div class="col-12 col-md-9 col-lg-7 col-xl-6"
                     style="background-color:#cdcdd3; border: 1px solid #ffffff00; border-radius: 24px; padding-top: 2%; padding-left: 5%; padding-right: 5%;">
-                    <!-- <div class="card" style="border-radius: 15px;">
-                        <div class="card-body"> -->
-                    {% for message in messages %}
+                                   {% for message in messages %}
                     <div class="alert alert-success {{ message.tags }}" role="alert">
                         {{ message }}
                     </div>
@@ -33,9 +31,7 @@
                             <label class="form-label" for="form3Example4cg">Password</label>
                             <input type="password" name="password1" id="password" class="form-control form-control-lg"
                                 style="background-color: #cdcdd3;" required />
-                            <!-- <span id="show-password"><i class="bi bi-eye-slash-fill"
-                                            style="float: right; margin: -41px 15px 1px 1px;"></i></span> -->
-                            <span onclick="password_show_hide_signin();">
+                                                  <span onclick="password_show_hide_signin();">
                                 <i class="bi bi-eye-fill" style="float: right; margin: -41px 15px 1px 1px;"
                                     id="show_eye"></i>
                                 <i class="bi bi-eye-slash-fill d-none" style="float: right; margin: -41px 15px 1px 1px;"
@@ -50,8 +46,6 @@
                                 password?</a>New user? <a href="{% url 'register' %}" class="text-body">SignUp
                                 here</a></p>
                     </form>
-                    <!-- </div>
-                    </div> -->
                 </div>
             </div>
         </div>
