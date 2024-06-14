@@ -1,0 +1,65 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'blog/nav.html' %}
+<section class="py-lg-8 py-md-10 py-sm-10 mh-100" style="background-color: #ebeef0bf;">
+    <div class="container p-4">
+        <div class="row rounded-1" style="background-color: #ebeef0;">
+            <div class="col-lg-10 col-12 m-auto p-4">
+                <div class="flex">
+                    <h2 class="text uppercase text-center">Update Post</h2>
+                </div>
+                <form action="" enctype='multipart/form-data' method="POST">
+                    {% csrf_token %}
+                    <div class="form-outline"><label class="form-label" for="" style="font-family: Tinos, serif; padding: 2px 2px 2px 24px; color: rgba(34, 47, 62, 0.232);
+                        ">Title</label>
+                        <label for="form-label">
+                            <h1></h1>
+                        </label>
+                        <input type="text" name="title" id="title" value="{{ post.title }}" class="form-control-lg"
+                            placeholder="Title">
+                    </div>
+                    <div class="form-outline"><label class="form-label" for="" style="font-family: Tinos, serif; padding: 2px 2px 2px 24px; color: rgba(34, 47, 62, 0.232);
+                        ">Subtitle</label>
+                        <label for="form-label">
+                            <h3></h3>
+                        </label>
+                        <input type="text" name="subtitle" id="subtitle" value="{{ post.subtitle }}"
+                            class="form-control-lg" placeholder="Subtitle">
+                    </div>
+                    <div class="form-outline d-flex mt-5">
+                        <label class="form-label" for="" style="font-size: 20px;font-weight: 200;
+                        font-family: Tinos, serif; padding: 2px 2px 2px 24px; color: rgba(34, 47, 62, 0.232);
+                            ">Image</label>
+                        <input type="file" name="post_image" src="{{ post.post_image.url}}"
+                            class="form-control form-control-sm mx-auto col-2" id="post_image"
+                            style="width:50%; background-color: transparent;padding: 0.5rem 0.5rem; border: 0.5px solid #80808000;" />
+                    </div>
+                    <div class="form-outline d-flex mt-5">
+                        <label class="form-label" for="" style="font-family: Tinos, serif; padding: 2px 2px 2px 24px; color: rgba(34, 47, 62, 0.232);
+                            ">Current Image</label>
+                        <a class="mx-auto text-primary" style="width: 54%; word-wrap: break-word;"
+                            href="{{post.post_image.url}}">{{post.post_image}}</a>
+                    </div>
+                    <div class="form-outline">
+                        <div class="form-group">
+                            <label for="form-group">
+                            </label>
+                            <textarea class="form-control form-control-lg" name="content" id="editor" rows="10"
+                                placeholder="Tell your story..."
+                                data-error="Please, leave us a message.">{{post.content | safe}}</textarea>
+                        </div>
+                        <div class="my-3 d-flex justify-content-center">
+                            <button class="btn btn-secondary btn-sm btn-block rounded-5">UPDATE
+                                POST</button>
+                        </div>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+</section>
+{% endblock content %}

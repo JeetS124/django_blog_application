@@ -1,0 +1,73 @@
+<div class="header font-fam">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #ffffff;">
+        <div class="container-fluid col-8">
+            <a class="navbar-brand fs-4 fw-bold" href="/">Saga</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav col-lg-10 justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/about/">About</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'signin' %}">About</a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'blog:new_post' %}"><i class="bi bi-pencil-square"
+                                style="margin-right: 4px;"></i>Write</a>
+                    </li>
+                    <li class="nav-item">
+                        {% else %}
+                        <a class="nav-link active" href="{% url 'signin' %}"><i class="bi bi-pencil-square"
+                                style="margin-right: 4px;"></i>Write</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% if user.is_authenticated %}
+                <ul class="navbar-nav logout-btn justify-content-end">
+                    <!-- <a class=" nav-link active" href="">Logout</a> -->
+                    <li class="nav-item dropdown h4 pt-2">
+                        {% if user.profile.profile_image.url %}
+                        <a class="nav-link active dropdown-toggle text-secondary" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="rounded-5" src="{{user.profile.profile_image.url}}" height="32px" width="32px"
+                                alt="{{ user.first_name }}">
+                        </a>
+                        {% else %}
+                        <a class="nav-link active dropdown-toggle text-secondary" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i> </a>
+                        {% endif %}
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="">{{user.first_name}}</a></li>
+                            <hr class="dropdown-divider">
+                            <li><a class="dropdown-item" href="/profile/">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                            <li>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                {% else %}
+                <ul class="navbar-nav col-1 col-lg-3">
+                    <a class="nav-link active" href="{% url 'signin' %}">SignIn</a>
+                    <button class="btn btn-sm btn-outline-success m-1" style="border-radius: 20px; width: 120px;"
+                        type="submit"><a class="signup" href="{% url 'register' %}"> Get
+                            Started</a>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</div>

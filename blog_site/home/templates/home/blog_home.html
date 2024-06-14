@@ -1,0 +1,48 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Navigation-->
+{% include 'blog/nav.html' %}
+<!-- index -->
+<div class="py-md-10">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show w-75 mx-auto" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    <div class="container px-4">
+        <div class="row">
+            <div class="col-lg-5 mx-auto mt-xl-5 col-sm-11">
+                <div class="col-12 my-5 px-3">
+                    <h1 class="my-5 px-4" style="font-size: 34px;">"From Pixels to Lines: <color style=" color: red;">
+                        Exploring
+                        </color>
+                        the World of Design & Code"</h1>
+                    <p class="my-5 px-4" style="font-size: 19px;">I created this beautiful blogging website to share
+                        your
+                        thoughts to the world 🔨✨
+                    </p>
+                    <div class="my-5 h3 px-2">
+                        <i class="mx-3 bi bi-instagram"></i>
+                        <i class="mx-3 bi bi-linkedin"></i>
+                        <i class="mx-3 bi bi-twitter"></i>
+                        <i class="mx-3 bi bi-github"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-2 mt-xl-5 mx-auto">
+                <div class="col-lg-9 col-md-2 col-12 px-2">
+                    <img class="mt-5 px-2" height="357px" width="352px" src="{% static 'home/img/homepage.png' %}"
+                        alt="No image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'blog/posts.html' %}
+{% include 'blog/subscription_form.html' %}
+<!-- Footer -->
+
+{% endblock content %}

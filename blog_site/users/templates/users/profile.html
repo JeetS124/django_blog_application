@@ -1,0 +1,98 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+
+
+{% include "blog/nav.html" %}
+<section style="background-color: #eee;">
+    <div class="section row flex justify-content-center m-auto">
+        <div class="col-lg-10 pt-1">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} rounded">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <div class="row flex justify-content-center m-auto">
+            <div class="col-lg-3">
+                <div class="card mb-4 mt-4 pt-2">
+                    <div class="card-body text-center mb-2">
+                        <h5 class="mb-0">My Profile</h5>
+                    </div>
+                </div>
+                <div class="card col-py-8">
+                    <div class="card-body text-center">
+                        <img class="rounded-circle img-fluid mt-2 mb-2" style="height: 125px; width: 125px;"
+                            height="100px" width="100px" src="{{user.profile.profile_image.url}}" alt="">
+                        <hr class="my-3">
+                        <h5 class="mt-2 mb-2">{{ user.first_name}}</h5>
+                        <p class="text-muted mt-0 mb-2" style="font-size: 1rem;">{{ user.username }}</p>
+                        <p class="text-muted mt-0 mb-2" style="font-size: 1rem;">Python Developer,
+                            Indore</p>
+                        <div class="d-flex justify-content-center mb-4">
+                            <a href="/edit_profile/{{user.profile.id}}"><button
+                                    class="btn btn-sm btn-outline-danger mx-1">
+                                    Edit
+                                    Profile</button></a>
+                            <a href="#"><button class="btn btn-sm btn-outline-danger">Reset
+                                    Password</button></a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-7 mt-4">
+                <div class="card mb-4">
+                    <div class="card-body" style="padding-top: 122px; padding-bottom: 122px;">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0 fw-bold">Full Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ user.first_name }} {{ user.last_name }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0 fw-bold">Username</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ user.username }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0 fw-bold">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ user.email }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0 fw-bold">Mobile</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">(091) 123-4321</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0 fw-bold">City</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">Indore</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+{% endblock content %}
