@@ -1,0 +1,85 @@
+{% load static %}
+<section class="py-lg-8 py-md-10 px-md-5" style="background-color: #ebeef0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div>
+                    <h2>Latest Post</h2>
+                </div>
+            </div>
+            <div class="container d-flex">
+                <div class="row row-cols-1 row-cols-md-3">
+                    {% for post in posts %}
+                    {% if user.is_authenticated %}
+                    <div class="col-12 col-md-4 card-post">
+                        <div class="" style="padding: 8px;">
+                            <a href="blog/{{post.slug}}" class="image-hover img-zoom-in">
+                                <img src="{{post.post_image.url}}" height="225px" width="425px"
+                                    class="card-img-top rounded-3" alt="...">
+                            </a>
+                            <div class="card-content">
+                                <div class="card-authors">
+                                    <div class="author">
+                                        <div class="author-image">
+                                            <a href="/profile/">
+                                                <img src="{{post.author.profile.profile_image.url}}" alt="...">
+                                            </a>
+                                        </div>
+                                        <div class="author-content">
+                                            <div class="author-name">{{post.author.first_name}}</div>
+                                            <div class="author-date">{{post.timeStamp.date}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="my-3"> <a class="heading" href="blog/{{post.slug}}">{{ post.title }}</a>
+                                </h5>
+                                <p class="my-2">{{post.subtitle | truncatechars:100}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="col-12 col-md-4 card-post">
+                        <div class="" style="padding: 8px;">
+                            <a href="{% url 'signin' %}" class="image-hover img-zoom-in">
+                                <img src="{{post.post_image.url}}" height="225px" width="425px"
+                                    class="card-img-top rounded-3" alt="...">
+                            </a>
+                            <div class="card-content">
+                                <div class="card-authors">
+                                    <div class="author">
+                                        <div class="author-image">
+                                            <a href="">
+                                                <img src="{{post.author.profile.profile_image.url}}" alt="...">
+                                            </a>
+                                        </div>
+                                        <div class="author-content">
+                                            <div class="author-name">{{post.author.first_name}}</div>
+                                            <div class="author-date">{{post.timeStamp.date}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="my-3"> <a class="heading" href="{% url 'signin' %}">{{ post.title }}</a></h5>
+                                <p class="my-2">{{ post.subtitle }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="container d-flex">
+                    <div class="row">
+                        <button class="d-flex btn btn-lg border border-danger mt-2 mb-2 mx-5"
+                            style="border-radius: 24px; width: 158px; height: 50px;" type="button">
+                            <a class="text-danger p-1" href="/allposts/">
+                                View More
+                                <i class="bi bi-arrow-right" style=" margin-left: 3px;"></i>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
