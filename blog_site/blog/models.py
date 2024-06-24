@@ -17,7 +17,7 @@ class Post(models.Model):
     content = HTMLField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=130, null=False, unique=True)
-    timeStamp = models.DateTimeField(blank=True, default=datetime.now())
+    timeStamp = models.DateTimeField(blank=True, default=timezone.now())
 
     def __str__(self):
         return self.title + ' by ' + self.author.first_name + f' ({self.s_no})'
