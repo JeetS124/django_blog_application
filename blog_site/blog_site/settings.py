@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [".now.sh", "127.0.0.1", "localhost","7cx-energetic-avogadro.circumeo-apps.net"]
 
+CSRF_TRUSTED_ORIGINS = ["https://7cx-energetic-avogadro.circumeo-apps.net"]
+
 # Application definition
 
 INSTALLED_APPS = [
