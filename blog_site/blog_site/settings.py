@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-aj&=&ut%v&=l_2&*_gc^8b0d^crd1nkbxi+&3*c3bil+sf0p95
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["now.sh", "127.0.0.1", "localhost","7cx-energetic-avogadro.circumeo-apps.net"]
+ALLOWED_HOSTS = [".now.sh", "127.0.0.1", "localhost","7cx-energetic-avogadro.circumeo-apps.net"]
 
 # Application definition
 
